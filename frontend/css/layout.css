@@ -1,0 +1,87 @@
+/* .background{
+    margin:0;
+    min-height:100vh;
+    background-image:url(../images/login.png);
+    background-size:cover;
+}
+
+.main {
+     min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+.box form {
+    display:flex;
+    flex-direction:column;
+}
+
+body{
+margin:0;
+font-family:Arial;
+ background:#f5f5f5; 
+background-image:url(../images/Pizza\ de\ fundo.png);
+}
+
+.header{
+background:#b22222;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+.container{
+padding:30px;
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+justify-content:center;
+}
+
+.pizza{
+background:white;
+padding:15px;
+border-radius:12px;
+text-align:center;
+text-decoration:none;
+color:black;
+transition:0.2s;
+width:550px;
+}
+
+.pizza:hover{
+transform:scale(1.03);
+}
+
+.pizza img{
+width:100%;
+border-radius:10px;
+} */
+
+.main {
+ min-height:100vh;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+}
+
+.header{
+ background:#b22222;
+ padding:15px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+.container{
+ padding:30px;
+ display:flex;
+ flex-wrap:wrap;
+ gap:20px;
+ justify-content:center;
+}

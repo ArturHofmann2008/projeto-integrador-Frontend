@@ -1,0 +1,24 @@
+.box form {
+ display:flex;
+ flex-direction:column;
+}
+
+.pizza{
+ background:white;
+ padding:15px;
+ border-radius:12px;
+ text-align:center;
+ text-decoration:none;
+ color:black;
+ transition:0.2s;
+ width:550px;
+}
+
+.pizza:hover{
+ transform:scale(1.03);
+}
+
+.pizza img{
+ width:100%;
+ border-radius:10px;
+}
