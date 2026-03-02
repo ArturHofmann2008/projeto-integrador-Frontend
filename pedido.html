@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="./js/script.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 30px;
+            justify-content: center;
+            background-image: url(./images/Fundo\ de\ pizza\ 2.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex: 1;
+        }
+        .produto {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        .produto img {
+            width: 100%;
+            min-height: 350px;
+            border-radius: 10px;
+        }
+        .produto button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            margin-top: auto;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .produto button:hover {
+            background: #219150;
+        }
+        .carrinho {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .item-carrinho {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .total {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .remover {
+            color: red;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="brand">
+            <img class="logo" src="./images/pizza logo.png" alt="Logo">
+            <h1>Pizzaria Massa Obesa</h1>
+        </div>
+        <nav class="menu">
+            <a href="./index.html">Home</a>
+            <a href="./pedido.html">Pedido</a>
+            <a href="#">Contato</a>
+            <a href="#" id="btnLogout">Logout</a>
+        </nav>
+        <input type="search" placeholder="Buscar pizza">
+    </header>
+    <main class="container">
+        <section class="produto">
+            <img src="./images/PIZZA OBESA.webp" alt="Pizza Calabresa">
+            <h2>Pizza Calabresa</h2>
+            <p>Deliciosa pizza de calabresa com cebola, mussarela e molho especial da casa. Massa artesanal e ingredientes frescos.</p>
+            <p><strong>Preço: R$ 39,90</strong></p>
+            <button onclick="adicionarCarrinho('Pizza Calabresa', 39.90)">Adicionar ao Carrinho</button>
+        </section>
+        <section class="produto">
+            <img src="./images/PIZZA OBESA PLUS.webp" alt="Pizza Calabresa">
+            <h2>Pizza Calabresa Obesa</h2>
+            <p>Deliciosa pizza de calabresa com cebola, mussarela e molho especial da casa. Massa artesanal e ingredientes frescos.</p>
+            <p><strong>Preço: R$ 42,90</strong></p>
+            <button onclick="adicionarCarrinho('Pizza de Calabresa Obesa', 42.90)">Adicionar ao Carrinho</button>
+        </section>
+        <section class="produto">
+            <img src="./images/combo de refrigerante.jpg" alt="Combo de Refrigerantes">
+            <h2>Combo de refrigerantes</h2>
+            <p>Três refrigerantes com sabor: laranja, limão e coca cola. Com açúcar extra e não temos dolynho incluido no combo.</p>
+            <p><strong>Preço: R$ 30,00</strong></p>
+            <button onclick="adicionarCarrinho('Combo de Refrigerantes', 30.00)">Adicionar ao Carrinho</button>
+        </section>
+        <aside class="carrinho">
+            <h2>🛒 Carrinho</h2>
+            <div id="lista-carrinho"></div>
+            <p class="total">Total: R$ <span id="total">0.00</span></p>
+            <button class="botao-comprar" onclick="finalizarCompra()">Finalizar Compra</button>
+        </aside>
+    </main>
+    <script>
+        let carrinho = [];
+        let total = 0;
+
+        function adicionarCarrinho(nome, preco) {
+            carrinho.push({ nome, preco });
+            total += preco;
+            atualizarCarrinho();
+        }
+
+        function removerItem(index) {
+            total -= carrinho[index].preco;
+            carrinho.splice(index, 1);
+            atualizarCarrinho();
+        }
+
+        function atualizarCarrinho() {
+            const lista = document.getElementById("lista-carrinho");
+            const totalSpan = document.getElementById("total");
+            lista.innerHTML = "";
+            carrinho.forEach((item, index) => {
+                lista.innerHTML += `
+                    <div class="item-carrinho">
+                        <span>${item.nome} - R$ ${item.preco.toFixed(2)}</span>
+                        <span class="remover" onclick="removerItem(${index})">❌</span>
+                    </div>
+                `;
+            });
+            totalSpan.textContent = total.toFixed(2);
+        }
+
+        function finalizarCompra() {
+            if (carrinho.length === 0) {
+                alert("Seu carrinho está vazio!");
+                return;
+            }
+            alert("Compra realizada com sucesso! 🍕");
+            carrinho = [];
+            total = 0;
+            atualizarCarrinho();
+        }
+    </script>
+</body>
+</html>
